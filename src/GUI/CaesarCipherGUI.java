@@ -113,12 +113,14 @@ public class CaesarCipherGUI extends JFrame {
         * */
         buttonDecrypt.addActionListener(e -> {
             if (isFileChosen(this.nameFile)) {
-                Integer key = (Integer) this.spinnerKey.getValue();
+                if (!this.text.isBlank() || !this.text.isEmpty()) {
+                    Integer key = (Integer) this.spinnerKey.getValue();
 
-                if (key == 0) {
-                    findKey();
-                } else
-                    this.textAreaPreview.setText(new CaesarCipher(text).decrypt((Integer) spinnerKey.getValue()));
+                    if (key == 0) {
+                        findKey();
+                    } else
+                        this.textAreaPreview.setText(new CaesarCipher(text).decrypt((Integer) spinnerKey.getValue()));
+                }
             }
         });
 
