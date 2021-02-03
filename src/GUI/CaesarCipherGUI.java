@@ -181,9 +181,7 @@ public class CaesarCipherGUI extends JFrame {
             // text.lines().findFirst().orElseThrow() ritorna la prima riga del testo. orElseThrow() ritorna una
             // eccezione se non esiste un elemento.
             try {
-                DecryptedString decryptedString = new DecryptedString(text.lines().findFirst().orElseThrow(), i);
-                executor.submit(new DecryptThread(decryptedString));
-                tempList.add(decryptedString);
+                executor.submit(new DecryptThread(new DecryptedString(text.lines().findFirst().orElseThrow(), i), tempList));
             } catch (NoSuchElementException exception) {
                 JOptionPane.showMessageDialog(this, exception.getMessage(), "Error",
                         JOptionPane.ERROR_MESSAGE);
